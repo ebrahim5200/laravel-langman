@@ -108,21 +108,27 @@ class FindCommand extends Command
 
             $original = [];
 
+//             foreach ($allLanguages as $languageKey) {
+// //                 $original[$languageKey] =
+// //                     isset($values[$languageKey])
+// //                         ? $values[$languageKey]
+// //                         : isset($filesContent[$fileName][$languageKey][$key]) ? $filesContent[$fileName][$languageKey][$key] : '';
+//                 if (isset($values[$languageKey])) {
+//                     $original[$languageKey] = $values[$languageKey];
+//                 } else {
+//                     if (isset($filesContent[$fileName][$languageKey][$key])) {
+//                         $original[$languageKey] = $filesContent[$fileName][$languageKey][$key];
+//                     } else {
+//                         $original[$languageKey] = '';
+//                     }
+//                 }
+//             }
             foreach ($allLanguages as $languageKey) {
-//                 $original[$languageKey] =
-//                     isset($values[$languageKey])
-//                         ? $values[$languageKey]
-//                         : isset($filesContent[$fileName][$languageKey][$key]) ? $filesContent[$fileName][$languageKey][$key] : '';
-                if (isset($values[$languageKey])) {
-                    $original[$languageKey] = $values[$languageKey];
-                } else {
-                    if (isset($filesContent[$fileName][$languageKey][$key])) {
-                        $original[$languageKey] = $filesContent[$fileName][$languageKey][$key];
-                    } else {
-                        $original[$languageKey] = '';
-                    }
-                }
-            }
+                  $original[$languageKey] =
+                  isset($values[$languageKey])
+                        ? $values[$languageKey]
+                      : (isset($filesContent[$fileName][$languageKey][$key]) ? $filesContent[$fileName][$languageKey][$key] : '');
+                  }
 
             // Sort the language values based on language name
             ksort($original);
